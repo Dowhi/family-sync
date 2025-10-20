@@ -13,8 +13,18 @@
   <meta name="apple-mobile-web-app-title" content="Calendario Familiar">
   <meta name="apple-touch-fullscreen" content="yes">
   
-   <!-- iOS icons - using inline SVG -->
-   <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' fill='%23FFFFFF' rx='20'/><path d='M140 40H40c-5.5 0-10 4.5-10 10v90c0 5.5 4.5 10 10 10h100c5.5 0 10-4.5 10-10V50c0-5.5-4.5-10-10-10zm-5 95H45V55h90v80z' fill='%231B5E20'/></svg>">
+  <!-- iOS icons -->
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="icons/Icon-152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/Icon-180.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="icons/Icon-167.png">
+  
+  <!-- iOS splash screens -->
+  <link rel="apple-touch-startup-image" href="splash/Default@2x~iphone.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)">
+  <link rel="apple-touch-startup-image" href="splash/Default@3x~iphone.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)">
+  <link rel="apple-touch-startup-image" href="splash/Default@2x~iphonex.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)">
+  <link rel="apple-touch-startup-image" href="splash/Default@3x~iphonexr.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)">
+  <link rel="apple-touch-startup-image" href="splash/Default@3x~iphonexsmax.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)">
   
   <!-- PWA meta tags -->
   <meta name="mobile-web-app-capable" content="yes">
@@ -37,20 +47,23 @@
   <!-- Manifest -->
   <link rel="manifest" href="manifest.json">
   
-   <!-- Favicon -->
-   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📅</text></svg>">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
   
-   <!-- Open Graph -->
-   <meta property="og:title" content="Calendario Familiar">
-   <meta property="og:description" content="Aplicación de calendario familiar con sincronización en tiempo real">
-   <meta property="og:url" content="https://dowhi.github.io/family-sync/">
-   <meta property="og:type" content="website">
-   <meta property="og:site_name" content="Calendario Familiar">
-   
-   <!-- Twitter Card -->
-   <meta name="twitter:card" content="summary">
-   <meta name="twitter:title" content="Calendario Familiar">
-   <meta name="twitter:description" content="Aplicación de calendario familiar con sincronización en tiempo real">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calendario Familiar">
+  <meta property="og:description" content="Aplicación de calendario familiar con sincronización en tiempo real">
+  <meta property="og:image" content="icons/Icon-512.png">
+  <meta property="og:url" content="https://familysync.app">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Calendario Familiar">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Calendario Familiar">
+  <meta name="twitter:description" content="Aplicación de calendario familiar con sincronización en tiempo real">
+  <meta name="twitter:image" content="icons/Icon-512.png">
   
   <title>Calendario Familiar</title>
   
@@ -239,8 +252,7 @@
     <!-- Flutter app will be mounted here -->
   </div>
   
-   <script src="flutter.js" defer></script>
-   <script src="main.dart.js" defer></script>
- </body>
- </html>
+  <script src="flutter.js" defer></script>
+</body>
+</html>
 
