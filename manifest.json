@@ -10,5 +10,13 @@
   "scope": "/",
   "lang": "es",
   "dir": "ltr",
-  "categories": ["productivity", "utilities", "lifestyle"]
+  "categories": ["productivity", "utilities", "lifestyle"],
+  "icons": [
+    {
+      "src": "icons/Icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
 }
