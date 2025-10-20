@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Aplicación de calendario familiar con sincronización en tiempo real">
+  <meta name="keywords" content="calendario, familiar, eventos, turnos, sincronización">
+  <meta name="author" content="FamilySync">
+  
+  <!-- iOS meta tags -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Calendario Familiar">
+  <meta name="apple-touch-fullscreen" content="yes">
+  
+  <!-- iOS icons -->
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="icons/Icon-152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/Icon-180.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="icons/Icon-167.png">
+  
+  <!-- iOS splash screens -->
+  <link rel="apple-touch-startup-image" href="splash/Default@2x~iphone.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)">
+  <link rel="apple-touch-startup-image" href="splash/Default@3x~iphone.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)">
+  <link rel="apple-touch-startup-image" href="splash/Default@2x~iphonex.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)">
+  <link rel="apple-touch-startup-image" href="splash/Default@3x~iphonexr.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)">
+  <link rel="apple-touch-startup-image" href="splash/Default@3x~iphonexsmax.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)">
+  
+  <!-- PWA meta tags -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Calendario Familiar">
+  <meta name="theme-color" content="#1B5E20">
+  <meta name="msapplication-TileColor" content="#1B5E20">
+  <meta name="msapplication-tap-highlight" content="no">
+  
+  <!-- Viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  
+  <!-- Security -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.gstatic.com https://www.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https: wss:;">
+  
+  <!-- Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Manifest -->
+  <link rel="manifest" href="manifest.json">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calendario Familiar">
+  <meta property="og:description" content="Aplicación de calendario familiar con sincronización en tiempo real">
+  <meta property="og:image" content="icons/Icon-512.png">
+  <meta property="og:url" content="https://familysync.app">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Calendario Familiar">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Calendario Familiar">
+  <meta name="twitter:description" content="Aplicación de calendario familiar con sincronización en tiempo real">
+  <meta name="twitter:image" content="icons/Icon-512.png">
+  
+  <title>Calendario Familiar</title>
+  
+  <style>
+    /* Loading screen styles */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #1B5E20;
+      font-family: 'Roboto', sans-serif;
+      overflow: hidden;
+    }
+    
+    .loading-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+    }
+    
+    .logo {
+      width: 80px;
+      height: 80px;
+      background-color: white;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      color: #1B5E20;
+    }
+    
+    .loading-text {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    
+    .loading-subtitle {
+      font-size: 16px;
+      opacity: 0.9;
+      margin-bottom: 32px;
+    }
+    
+    .spinner {
+      width: 24px;
+      height: 24px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top: 2px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Hide loading screen when app is ready */
+    .app-ready .loading-screen {
+      display: none;
+    }
+    
+    .app-ready .app-container {
+      display: block;
+    }
+    
+    .app-container {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading screen -->
+  <div class="loading-screen">
+    <div class="loading-container">
+      <div class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+        </svg>
+      </div>
+      <div class="loading-text">Calendario Familiar</div>
+      <div class="loading-subtitle">Mantén causa tu familia sincronizada</div>
+      <div class="spinner"></div>
+    </div>
+  </div>
+  
+  <!-- App container -->
+  <div class="app-container">
+    <script>
+      // Service Worker registration
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('flutter-first-frame', function () {
+          navigator.serviceWorker.register('flutter_service_worker.js?v=1');
+        });
+      }
+      
+      // Hide loading screen when Flutter is ready
+      window.addEventListener('flutter-first-frame', function () {
+        document.body.classList.add('app-ready');
+      });
+      
+      // PWA install prompt
+      let deferredPrompt;
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        
+        // Show install button or banner
+        const installButton = document.createElement('button');
+        installButton.textContent = 'Instalar app';
+        installButton.style.cssText = `
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          background: #1B5E20;
+          color: white;
+          border: none;
+          padding: 12px 24px;
+          border-radius: 8px;
+          font-size: 16px;
+          cursor: pointer;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          z-index: 1000;
+        `;
+        
+        installButton.addEventListener('click', () => {
+          deferredPrompt.prompt();
+          deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+              console.log('User accepted the install prompt');
+            }
+            deferredPrompt = null;
+          });
+          installButton.remove();
+        });
+        
+        document.body.appendChild(installButton);
+      });
+      
+      // Handle app installed
+      window.addEventListener('appinstalled', (evt) => {
+        console.log('PWA was installed');
+      });
+      
+      // Handle online/offline status
+      window.addEventListener('online', () => {
+        console.log('App is online');
+        document.body.classList.remove('offline');
+      });
+      
+      window.addEventListener('offline', () => {
+        console.log('App is offline');
+        document.body.classList.add('offline');
+      });
+      
+      // Prevent zoom on double tap (iOS)
+      let lastTouchEnd = 0;
+      document.addEventListener('touchend', function (event) {
+        const now = (new Date()).getTime();
+        if (now - lastTouchEnd <= 300) {
+          event.preventDefault();
+        }
+        lastTouchEnd = now;
+      }, false);
+      
+      // Prevent context menu on long press
+      document.addEventListener('contextmenu', function (event) {
+        event.preventDefault();
+      });
+      
+      // Handle back button (Android)
+      document.addEventListener('backbutton', function (event) {
+        event.preventDefault();
+      }, false);
+    </script>
+    
+    <!-- Flutter app will be mounted here -->
+  </div>
+  
+  <script src="flutter.js" defer></script>
+</body>
+</html>
+
