@@ -14,20 +14,24 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f5f5f5;
-            min-height: 100vh;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
         
         .header {
             background-color: #1B5E20;
             color: white;
-            padding: 16px;
+            padding: 8px 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-shrink: 0;
         }
         
         .header h1 {
-            font-size: 20px;
+            font-size: 16px;
             font-weight: bold;
         }
         
@@ -39,19 +43,21 @@
         .year-bar {
             background-color: #1B5E20;
             color: white;
-            padding: 8px 16px;
+            padding: 4px 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-shrink: 0;
         }
         
         .month-nav {
             background-color: #2196F3;
             color: white;
-            padding: 8px 16px;
+            padding: 4px 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-shrink: 0;
         }
         
         .month-nav button {
@@ -66,82 +72,88 @@
         .calendar-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 4px;
-            padding: 16px;
+            gap: 2px;
+            padding: 8px;
             background-color: white;
-            margin: 16px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            flex: 1;
+            border-radius: 0;
+            box-shadow: none;
+            overflow: hidden;
         }
         
         .calendar-day {
-            aspect-ratio: 1;
             border: 1px solid #e0e0e0;
-            border-radius: 4px;
-            padding: 4px;
+            border-radius: 2px;
+            padding: 2px;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             background-color: white;
-            min-height: 60px;
+            overflow: hidden;
+            min-height: 0;
         }
         
         .day-number {
-            font-size: 12px;
+            font-size: 10px;
             font-weight: bold;
             color: #333;
+            flex-shrink: 0;
         }
         
         .shift-d1 {
             background-color: #1976D2;
             color: white;
-            font-size: 8px;
-            padding: 2px 4px;
-            border-radius: 2px;
-            margin: 1px 0;
+            font-size: 6px;
+            padding: 1px 2px;
+            border-radius: 1px;
+            margin: 0.5px 0;
             font-weight: bold;
+            flex-shrink: 0;
         }
         
         .shift-d2 {
             background-color: #2196F3;
             color: white;
-            font-size: 8px;
-            padding: 2px 4px;
-            border-radius: 2px;
-            margin: 1px 0;
+            font-size: 6px;
+            padding: 1px 2px;
+            border-radius: 1px;
+            margin: 0.5px 0;
             font-weight: bold;
+            flex-shrink: 0;
         }
         
         .shift-libre {
             background-color: #4CAF50;
             color: white;
-            font-size: 8px;
-            padding: 2px 4px;
-            border-radius: 2px;
-            margin: 1px 0;
+            font-size: 6px;
+            padding: 1px 2px;
+            border-radius: 1px;
+            margin: 0.5px 0;
             font-weight: bold;
+            flex-shrink: 0;
         }
         
         .event {
             background-color: white;
             border: 1px solid #e0e0e0;
-            font-size: 7px;
-            padding: 2px;
-            border-radius: 2px;
-            margin: 1px 0;
+            font-size: 5px;
+            padding: 1px;
+            border-radius: 1px;
+            margin: 0.5px 0;
             color: #333;
+            flex-shrink: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
         
         .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
             background-color: #f5f5f5;
-            padding: 16px;
+            padding: 12px;
             display: flex;
             justify-content: space-evenly;
-            gap: 16px;
+            gap: 8px;
+            flex-shrink: 0;
         }
         
         .nav-button {
