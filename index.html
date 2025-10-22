@@ -2,8 +2,36 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Calendario Familiar</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="application-name" content="Calendario Familiar">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Calendario">
+    <meta name="description" content="Aplicación de calendario familiar con sincronización en tiempo real">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    <meta name="msapplication-TileColor" content="#1B5E20">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="theme-color" content="#1B5E20">
+    
+    <!-- iOS Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Calendario">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiB2aWV3Qm94PSIwIDAgMTgwIDE4MCI+CiAgPHJlY3Qgd2lkdGg9IjE4MCIgaGVpZ2h0PSIxODAiIGZpbGw9IiMxQjVFMjAiIHJ4PSIyMCIvPgogIDxwYXRoIGQ9Ik0xNTcgNDVIMjNjLTEyLjQgMC0yMiA5LjYtMjIgMjJ2NDZjMCAxMi40IDkuNiAyMiAyMiAyMmgxMzRjMTIuNCAwIDIyLTkuNiAyMi0yMlY2N2MwLTEyLjQtOS42LTIyLTIyLTIyem0tMjIgODhIMjNWNzJoMTEyVjEzM3oiIGZpbGw9IndoaXRlIi8+CiAgPGNpcmNsZSBjeD0iOTAiIGN5PSI5MCIgcj0iMTEiIGZpbGw9IndoaXRlIi8+CiAgPHBhdGggZD0iTTkwIDQ1VjU2TTkwIDEyNFYxMzVNMjIgOTBIMzNMMTQ3IDkwSDE1OCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+">
+    <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiB2aWV3Qm94PSIwIDAgMTgwIDE4MCI+CiAgPHJlY3Qgd2lkdGg9IjE4MCIgaGVpZ2h0PSIxODAiIGZpbGw9IiMxQjVFMjAiIHJ4PSIyMCIvPgogIDxwYXRoIGQ9Ik0xNTcgNDVIMjNjLTEyLjQgMC0yMiA5LjYtMjIgMjJ2NDZjMCAxMi40IDkuNiAyMiAyMiAyMmgxMzRjMTIuNCAwIDIyLTkuNiAyMi0yMlY2N2MwLTEyLjQtOS42LTIyLTIyLTIyem0tMjIgODhIMjNWNzJoMTEyVjEzM3oiIGZpbGw9IndoaXRlIi8+CiAgPGNpcmNsZSBjeD0iOTAiIGN5PSI5MCIgcj0iMTEiIGZpbGw9IndoaXRlIi8+CiAgPHBhdGggZD0iTTkwIDQ1VjU2TTkwIDEyNFYxMzVNMjIgOTBIMzNMMTQ3IDkwSDE1OCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj4KICA8cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIGZpbGw9IiMxQjVFMjAiIHJ4PSI0Ii8+CiAgPHBhdGggZD0iTTI2IDEwSDZjLTEuMSAwLTIgLjktMiAyVjI0YzAgMS4xLjkgMiAyIDJoMjBjMS4xIDAgMi0uOSAyLTJWMTJjMC0xLjEtLjktMi0yLTJ6bS0yIDEySDhWMTJoMTZ2MTB6IiBmaWxsPSJ3aGl0ZSIvPgogIDxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjIiIGZpbGw9IndoaXRlIi8+CiAgPHBhdGggZD0iTTE2IDEwVjE0TTE2IDIwVjI2TTEwIDE2aDRNMTggMTZoNCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+">
     <style>
         * {
             margin: 0;
@@ -38,6 +66,21 @@
         .header-icons {
             display: flex;
             gap: 16px;
+        }
+        
+        .install-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            display: none;
+        }
+        
+        .install-button:hover {
+            background-color: #45a049;
         }
         
         .year-bar {
@@ -217,6 +260,7 @@
     <div class="header">
         <h1>Calendario</h1>
         <div class="header-icons">
+            <button class="install-button" id="installButton" onclick="showInstallPrompt()">📱 Instalar App</button>
             <span style="cursor: pointer;" onclick="showMessage('Perfil')">👤</span>
             <span style="cursor: pointer;" onclick="showMessage('Configuración')">⚙️</span>
         </div>
@@ -347,6 +391,48 @@
         
         // Initialize calendar
         renderCalendar();
+        
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then((registration) => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch((registrationError) => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+        
+        // Handle PWA install prompt
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            console.log('PWA install prompt available');
+            
+            // Show install button
+            const installButton = document.getElementById('installButton');
+            if (installButton) {
+                installButton.style.display = 'block';
+            }
+        });
+        
+        // Show install prompt function
+        function showInstallPrompt() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    } else {
+                        console.log('User dismissed the install prompt');
+                    }
+                    deferredPrompt = null;
+                });
+            }
+        }
     </script>
 </body>
 </html>
